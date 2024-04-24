@@ -1,0 +1,421 @@
+
+UART_Alexis.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000028  00800100  0000027e  00000312  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000027e  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  00800128  00800128  0000033a  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000033a  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000036c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000088  00000000  00000000  000003ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000c5a  00000000  00000000  00000434  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000845  00000000  00000000  0000108e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000005d3  00000000  00000000  000018d3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000f4  00000000  00000000  00001ea8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000043b  00000000  00000000  00001f9c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000003c6  00000000  00000000  000023d7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000058  00000000  00000000  0000279d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 53 00 	jmp	0xa6	; 0xa6 <__vector_14>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ee e7       	ldi	r30, 0x7E	; 126
+  7c:	f2 e0       	ldi	r31, 0x02	; 2
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a8 32       	cpi	r26, 0x28	; 40
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a8 e2       	ldi	r26, 0x28	; 40
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	ae 32       	cpi	r26, 0x2E	; 46
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 85 00 	call	0x10a	; 0x10a <main>
+  9e:	0c 94 3d 01 	jmp	0x27a	; 0x27a <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <__vector_14>:
+int timer;   //Variable global
+int timer2;  //Variable global
+int bandera; //Variable global
+
+
+ISR(TIMER0_COMPA_vect) {
+  a6:	1f 92       	push	r1
+  a8:	0f 92       	push	r0
+  aa:	0f b6       	in	r0, 0x3f	; 63
+  ac:	0f 92       	push	r0
+  ae:	11 24       	eor	r1, r1
+  b0:	2f 93       	push	r18
+  b2:	3f 93       	push	r19
+  b4:	8f 93       	push	r24
+  b6:	9f 93       	push	r25
+	timer++;
+  b8:	80 91 28 01 	lds	r24, 0x0128	; 0x800128 <__data_end>
+  bc:	90 91 29 01 	lds	r25, 0x0129	; 0x800129 <__data_end+0x1>
+  c0:	01 96       	adiw	r24, 0x01	; 1
+  c2:	90 93 29 01 	sts	0x0129, r25	; 0x800129 <__data_end+0x1>
+  c6:	80 93 28 01 	sts	0x0128, r24	; 0x800128 <__data_end>
+	timer2++;
+  ca:	20 91 2a 01 	lds	r18, 0x012A	; 0x80012a <timer2>
+  ce:	30 91 2b 01 	lds	r19, 0x012B	; 0x80012b <timer2+0x1>
+  d2:	2f 5f       	subi	r18, 0xFF	; 255
+  d4:	3f 4f       	sbci	r19, 0xFF	; 255
+  d6:	30 93 2b 01 	sts	0x012B, r19	; 0x80012b <timer2+0x1>
+  da:	20 93 2a 01 	sts	0x012A, r18	; 0x80012a <timer2>
+	if (timer >= 3000) { // Si han pasado 3000 interrupciones (3 segundos) | Variable para el finalizado de lectura
+  de:	88 3b       	cpi	r24, 0xB8	; 184
+  e0:	9b 40       	sbci	r25, 0x0B	; 11
+  e2:	54 f0       	brlt	.+20     	; 0xf8 <__vector_14+0x52>
+		bandera= 1;
+  e4:	81 e0       	ldi	r24, 0x01	; 1
+  e6:	90 e0       	ldi	r25, 0x00	; 0
+  e8:	90 93 2d 01 	sts	0x012D, r25	; 0x80012d <bandera+0x1>
+  ec:	80 93 2c 01 	sts	0x012C, r24	; 0x80012c <bandera>
+		timer=0;
+  f0:	10 92 29 01 	sts	0x0129, r1	; 0x800129 <__data_end+0x1>
+  f4:	10 92 28 01 	sts	0x0128, r1	; 0x800128 <__data_end>
+	}
+
+}
+  f8:	9f 91       	pop	r25
+  fa:	8f 91       	pop	r24
+  fc:	3f 91       	pop	r19
+  fe:	2f 91       	pop	r18
+ 100:	0f 90       	pop	r0
+ 102:	0f be       	out	0x3f, r0	; 63
+ 104:	0f 90       	pop	r0
+ 106:	1f 90       	pop	r1
+ 108:	18 95       	reti
+
+0000010a <main>:
+
+int main(void)
+{	
+	bandera = 0; //Variable global inicializada utilizada para saber cuando se excede el temporizador
+ 10a:	10 92 2d 01 	sts	0x012D, r1	; 0x80012d <bandera+0x1>
+ 10e:	10 92 2c 01 	sts	0x012C, r1	; 0x80012c <bandera>
+	timer = 0; //Variable global inicializada
+ 112:	10 92 29 01 	sts	0x0129, r1	; 0x800129 <__data_end+0x1>
+ 116:	10 92 28 01 	sts	0x0128, r1	; 0x800128 <__data_end>
+	
+	DDRD |= (1<<DDD1); //Tx Establecido como salida.
+ 11a:	8a b1       	in	r24, 0x0a	; 10
+ 11c:	82 60       	ori	r24, 0x02	; 2
+ 11e:	8a b9       	out	0x0a, r24	; 10
+	char buffer[BUFFER_SIZE]; // Buffer para almacenar la cadena recibida
+	
+	// Inicialización del puerto serie
+	vTimerInit();  //Inicializar el timer.
+ 120:	0e 94 05 01 	call	0x20a	; 0x20a <vTimerInit>
+	vSerialInit(); //Inicializar la comunicación serial.
+ 124:	0e 94 14 01 	call	0x228	; 0x228 <vSerialInit>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 128:	2f ef       	ldi	r18, 0xFF	; 255
+ 12a:	8b e4       	ldi	r24, 0x4B	; 75
+ 12c:	9d e1       	ldi	r25, 0x1D	; 29
+ 12e:	21 50       	subi	r18, 0x01	; 1
+ 130:	80 40       	sbci	r24, 0x00	; 0
+ 132:	90 40       	sbci	r25, 0x00	; 0
+ 134:	e1 f7       	brne	.-8      	; 0x12e <main+0x24>
+ 136:	00 c0       	rjmp	.+0      	; 0x138 <main+0x2e>
+ 138:	00 00       	nop
+
+	
+	while (1)
+	{
+		_delay_ms(1200);
+		vWRITEString("123>");
+ 13a:	80 e0       	ldi	r24, 0x00	; 0
+ 13c:	91 e0       	ldi	r25, 0x01	; 1
+ 13e:	0e 94 30 01 	call	0x260	; 0x260 <vWRITEString>
+ 142:	2f ef       	ldi	r18, 0xFF	; 255
+ 144:	8b e4       	ldi	r24, 0x4B	; 75
+ 146:	9d e1       	ldi	r25, 0x1D	; 29
+ 148:	21 50       	subi	r18, 0x01	; 1
+ 14a:	80 40       	sbci	r24, 0x00	; 0
+ 14c:	90 40       	sbci	r25, 0x00	; 0
+ 14e:	e1 f7       	brne	.-8      	; 0x148 <main+0x3e>
+ 150:	00 c0       	rjmp	.+0      	; 0x152 <main+0x48>
+ 152:	00 00       	nop
+		_delay_ms(1200);
+		vWRITEString("123>");
+ 154:	80 e0       	ldi	r24, 0x00	; 0
+ 156:	91 e0       	ldi	r25, 0x01	; 1
+ 158:	0e 94 30 01 	call	0x260	; 0x260 <vWRITEString>
+ 15c:	2f ef       	ldi	r18, 0xFF	; 255
+ 15e:	8b e4       	ldi	r24, 0x4B	; 75
+ 160:	9d e1       	ldi	r25, 0x1D	; 29
+ 162:	21 50       	subi	r18, 0x01	; 1
+ 164:	80 40       	sbci	r24, 0x00	; 0
+ 166:	90 40       	sbci	r25, 0x00	; 0
+ 168:	e1 f7       	brne	.-8      	; 0x162 <main+0x58>
+ 16a:	00 c0       	rjmp	.+0      	; 0x16c <main+0x62>
+ 16c:	00 00       	nop
+		_delay_ms(1200);
+		vWRITEString("123>");
+ 16e:	80 e0       	ldi	r24, 0x00	; 0
+ 170:	91 e0       	ldi	r25, 0x01	; 1
+ 172:	0e 94 30 01 	call	0x260	; 0x260 <vWRITEString>
+ 176:	2f ef       	ldi	r18, 0xFF	; 255
+ 178:	8b e4       	ldi	r24, 0x4B	; 75
+ 17a:	9d e1       	ldi	r25, 0x1D	; 29
+ 17c:	21 50       	subi	r18, 0x01	; 1
+ 17e:	80 40       	sbci	r24, 0x00	; 0
+ 180:	90 40       	sbci	r25, 0x00	; 0
+ 182:	e1 f7       	brne	.-8      	; 0x17c <main+0x72>
+ 184:	00 c0       	rjmp	.+0      	; 0x186 <main+0x7c>
+ 186:	00 00       	nop
+		_delay_ms(1200);
+		vWRITEString("123>");
+ 188:	80 e0       	ldi	r24, 0x00	; 0
+ 18a:	91 e0       	ldi	r25, 0x01	; 1
+ 18c:	0e 94 30 01 	call	0x260	; 0x260 <vWRITEString>
+ 190:	2f ef       	ldi	r18, 0xFF	; 255
+ 192:	8b e4       	ldi	r24, 0x4B	; 75
+ 194:	9d e1       	ldi	r25, 0x1D	; 29
+ 196:	21 50       	subi	r18, 0x01	; 1
+ 198:	80 40       	sbci	r24, 0x00	; 0
+ 19a:	90 40       	sbci	r25, 0x00	; 0
+ 19c:	e1 f7       	brne	.-8      	; 0x196 <main+0x8c>
+ 19e:	00 c0       	rjmp	.+0      	; 0x1a0 <main+0x96>
+ 1a0:	00 00       	nop
+		_delay_ms(1200);
+		vWRITEString("123>");
+ 1a2:	80 e0       	ldi	r24, 0x00	; 0
+ 1a4:	91 e0       	ldi	r25, 0x01	; 1
+ 1a6:	0e 94 30 01 	call	0x260	; 0x260 <vWRITEString>
+ 1aa:	2f ef       	ldi	r18, 0xFF	; 255
+ 1ac:	8b e4       	ldi	r24, 0x4B	; 75
+ 1ae:	9d e1       	ldi	r25, 0x1D	; 29
+ 1b0:	21 50       	subi	r18, 0x01	; 1
+ 1b2:	80 40       	sbci	r24, 0x00	; 0
+ 1b4:	90 40       	sbci	r25, 0x00	; 0
+ 1b6:	e1 f7       	brne	.-8      	; 0x1b0 <main+0xa6>
+ 1b8:	00 c0       	rjmp	.+0      	; 0x1ba <main+0xb0>
+ 1ba:	00 00       	nop
+ 1bc:	2f ef       	ldi	r18, 0xFF	; 255
+ 1be:	8d e3       	ldi	r24, 0x3D	; 61
+ 1c0:	99 e4       	ldi	r25, 0x49	; 73
+ 1c2:	21 50       	subi	r18, 0x01	; 1
+ 1c4:	80 40       	sbci	r24, 0x00	; 0
+ 1c6:	90 40       	sbci	r25, 0x00	; 0
+ 1c8:	e1 f7       	brne	.-8      	; 0x1c2 <main+0xb8>
+ 1ca:	00 c0       	rjmp	.+0      	; 0x1cc <main+0xc2>
+ 1cc:	00 00       	nop
+		_delay_ms(1200);
+		
+		
+		_delay_ms(3000);
+		vWRITEString("123456789ABCDFGGFSDSD>");
+ 1ce:	85 e0       	ldi	r24, 0x05	; 5
+ 1d0:	91 e0       	ldi	r25, 0x01	; 1
+ 1d2:	0e 94 30 01 	call	0x260	; 0x260 <vWRITEString>
+ 1d6:	2f ef       	ldi	r18, 0xFF	; 255
+ 1d8:	89 e6       	ldi	r24, 0x69	; 105
+ 1da:	98 e1       	ldi	r25, 0x18	; 24
+ 1dc:	21 50       	subi	r18, 0x01	; 1
+ 1de:	80 40       	sbci	r24, 0x00	; 0
+ 1e0:	90 40       	sbci	r25, 0x00	; 0
+ 1e2:	e1 f7       	brne	.-8      	; 0x1dc <main+0xd2>
+ 1e4:	00 c0       	rjmp	.+0      	; 0x1e6 <main+0xdc>
+ 1e6:	00 00       	nop
+		_delay_ms(1000);
+		vWRITEString("Hello world");
+ 1e8:	8c e1       	ldi	r24, 0x1C	; 28
+ 1ea:	91 e0       	ldi	r25, 0x01	; 1
+ 1ec:	0e 94 30 01 	call	0x260	; 0x260 <vWRITEString>
+ 1f0:	2f ef       	ldi	r18, 0xFF	; 255
+ 1f2:	81 e1       	ldi	r24, 0x11	; 17
+ 1f4:	9a e7       	ldi	r25, 0x7A	; 122
+ 1f6:	21 50       	subi	r18, 0x01	; 1
+ 1f8:	80 40       	sbci	r24, 0x00	; 0
+ 1fa:	90 40       	sbci	r25, 0x00	; 0
+ 1fc:	e1 f7       	brne	.-8      	; 0x1f6 <main+0xec>
+ 1fe:	00 c0       	rjmp	.+0      	; 0x200 <main+0xf6>
+ 200:	00 00       	nop
+		_delay_ms(5000);
+	   vWRITEChar('!');
+ 202:	81 e2       	ldi	r24, 0x21	; 33
+ 204:	0e 94 29 01 	call	0x252	; 0x252 <vWRITEChar>
+ 208:	8f cf       	rjmp	.-226    	; 0x128 <main+0x1e>
+
+0000020a <vTimerInit>:
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include "timer.h"
+
+void vTimerInit(void){
+	CLKPR = 0x80;
+ 20a:	e1 e6       	ldi	r30, 0x61	; 97
+ 20c:	f0 e0       	ldi	r31, 0x00	; 0
+ 20e:	80 e8       	ldi	r24, 0x80	; 128
+ 210:	80 83       	st	Z, r24
+	CLKPR = 0x00;
+ 212:	10 82       	st	Z, r1
+
+	TCCR0A = (1 << WGM01);
+ 214:	82 e0       	ldi	r24, 0x02	; 2
+ 216:	84 bd       	out	0x24, r24	; 36
+	TCCR0B = (1 << CS02) | (1 << CS00);
+ 218:	95 e0       	ldi	r25, 0x05	; 5
+ 21a:	95 bd       	out	0x25, r25	; 37
+	TIMSK0 = (1 << OCIE0A);
+ 21c:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7f806e>
+	OCR0A = 7;
+ 220:	87 e0       	ldi	r24, 0x07	; 7
+ 222:	87 bd       	out	0x27, r24	; 39
+	
+	sei();
+ 224:	78 94       	sei
+ 226:	08 95       	ret
+
+00000228 <vSerialInit>:
+#include <string.h>
+#include "serial.h"
+int tambuf = -1;
+
+void vSerialInit(void){
+	CLKPR = 0x80;
+ 228:	e1 e6       	ldi	r30, 0x61	; 97
+ 22a:	f0 e0       	ldi	r31, 0x00	; 0
+ 22c:	80 e8       	ldi	r24, 0x80	; 128
+ 22e:	80 83       	st	Z, r24
+	CLKPR = 0x00;
+ 230:	10 82       	st	Z, r1
+	UCSR0A = (0<<TXC0)|(1<<U2X0)|(0<<MPCM0);
+ 232:	82 e0       	ldi	r24, 0x02	; 2
+ 234:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+	UCSR0B = (0<<RXCIE0)|(0<<TXCIE0)|(0<<UDRIE0)|(1<<RXEN0)|(1<<TXEN0)|(0<<UCSZ02)|(0<<TXB80);
+ 238:	88 e1       	ldi	r24, 0x18	; 24
+ 23a:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+	UCSR0C = (1 << UCSZ01) | (1 << UCSZ00) | (0 << USBS0);
+ 23e:	86 e0       	ldi	r24, 0x06	; 6
+ 240:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+	UBRR0 = 8; //(F_CPU/8/9600)-1; // Alexis.
+ 244:	88 e0       	ldi	r24, 0x08	; 8
+ 246:	90 e0       	ldi	r25, 0x00	; 0
+ 248:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+ 24c:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+ 250:	08 95       	ret
+
+00000252 <vWRITEChar>:
+}
+
+	void vWRITEChar(char data){  //Escritura de un solo caracter.
+		while ( !( UCSR0A & (1<<UDRE0)) );
+ 252:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+ 256:	95 ff       	sbrs	r25, 5
+ 258:	fc cf       	rjmp	.-8      	; 0x252 <vWRITEChar>
+		UDR0 = data;
+ 25a:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+ 25e:	08 95       	ret
+
+00000260 <vWRITEString>:
+	}
+
+
+	void vWRITEString(const char *str) { //Escritura de una cadena que mientras exista espacio en la cadena se enviará el dato.
+ 260:	cf 93       	push	r28
+ 262:	df 93       	push	r29
+ 264:	ec 01       	movw	r28, r24
+		while (*str) {
+ 266:	03 c0       	rjmp	.+6      	; 0x26e <vWRITEString+0xe>
+			vWRITEChar(*str);
+ 268:	0e 94 29 01 	call	0x252	; 0x252 <vWRITEChar>
+			str++;
+ 26c:	21 96       	adiw	r28, 0x01	; 1
+		UDR0 = data;
+	}
+
+
+	void vWRITEString(const char *str) { //Escritura de una cadena que mientras exista espacio en la cadena se enviará el dato.
+		while (*str) {
+ 26e:	88 81       	ld	r24, Y
+ 270:	81 11       	cpse	r24, r1
+ 272:	fa cf       	rjmp	.-12     	; 0x268 <vWRITEString+0x8>
+			vWRITEChar(*str);
+			str++;
+		}
+
+	}
+ 274:	df 91       	pop	r29
+ 276:	cf 91       	pop	r28
+ 278:	08 95       	ret
+
+0000027a <_exit>:
+ 27a:	f8 94       	cli
+
+0000027c <__stop_program>:
+ 27c:	ff cf       	rjmp	.-2      	; 0x27c <__stop_program>
